@@ -9,7 +9,6 @@ private const val CHARACTER_END_POINT = "character"
 private const val LOCATION_END_POINT = "location"
 
 interface RickAndMortyApi {
-
     @GET(CHARACTER_END_POINT)
     suspend fun getCharacter():CharacterResponse
 

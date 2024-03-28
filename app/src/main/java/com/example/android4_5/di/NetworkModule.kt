@@ -1,7 +1,6 @@
 package com.example.android4_5.di
 
 import com.example.android4_5.data.remote.apiservise.RickAndMortyApi
-import com.example.android4_5.data.repositories.RickAndMortyRepositories
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -44,9 +43,4 @@ object NetworkModule {
     fun provideRAMApi(retrofit: Retrofit): RickAndMortyApi {
         return retrofit.create(RickAndMortyApi::class.java)
     }
-
-    @Provides
-    @Singleton
-    fun providesRAMRepositories(rickAndMortyApi: RickAndMortyApi) =
-        RickAndMortyRepositories(rickAndMortyApi)
 }

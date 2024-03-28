@@ -12,7 +12,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class RickAndMortyFragment : Fragment(R.layout.fragment_rick_and_morty) {
-
     private val binding by viewBinding(FragmentRickAndMortyBinding::bind)
     private val viewModel by viewModels<RickAndMortyViewModel>()
     private val rickAndMortyAdapter = RickAndMortyAdapter()

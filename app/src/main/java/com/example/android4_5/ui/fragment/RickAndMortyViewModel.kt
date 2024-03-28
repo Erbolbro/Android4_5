@@ -17,7 +17,6 @@ import javax.inject.Inject
 class RickAndMortyViewModel @Inject constructor(
     private val repositories: RickAndMortyRepositories
 ) : ViewModel() {
-
     private var _locationCharacter = MutableLiveData<List<CharacterAndLocationResponse>>()
     val locationCharacter: LiveData<List<CharacterAndLocationResponse>> = _locationCharacter
 
@@ -30,14 +29,18 @@ class RickAndMortyViewModel @Inject constructor(
             val characters = async { repositories.getCharacter() }
             val location = async { repositories.getLocation() }
             connectList(characters.await().results!!, location.await().results!!)
-
         }
     }
+
     private fun connectList(
         characterList: List<ResultsItemCharacters>, locationList: List<ResultsItemLocation>
     ) {
         val combinedList = characterList.zip(locationList).map { (character) ->
-            CharacterAndLocationResponse(character.species, character.name, character.location.name,character.image)
+            CharacterAndLocationResponse(
+                character.name,
+                character.location.name,
+                character.image
+            )
         }
         _locationCharacter.value = combinedList
     }

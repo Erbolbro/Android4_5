@@ -1,4 +1,5 @@
 package com.example.android4_5.ui.adapter
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -21,7 +22,6 @@ class RickAndMortyAdapter :
                 .into(ivItem)
             tvItem.text = data.name
             tvLocation.text = data.location
-
         }
     }
 
@@ -34,8 +34,11 @@ class RickAndMortyAdapter :
     }
 
     override fun onBindViewHolder(holder: RickAndMortyViewHolder, position: Int) {
-        holder.onBind(currentList[position])
+        getItem(position).let {
+            holder.onBind(it)
+        }
     }
+
 
     companion object {
         class DiffUtilCallback : DiffUtil.ItemCallback<CharacterAndLocationResponse>() {
